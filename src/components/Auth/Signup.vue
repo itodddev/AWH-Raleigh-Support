@@ -52,7 +52,7 @@
 <script>
 import slugify from "slugify";
 import db from "../../firebase/init";
-import functions from "firebase/functions";
+import "firebase/functions";
 
 export default {
   name: "Signup",
@@ -80,7 +80,7 @@ export default {
         let checkUserName = db.app.functions().httpsCallable("checkUserName");
         checkUserName({ slug: this.slug }).then(result => {
           console.log(result);
-          console.log(functions);
+          //console.log(functions);
 
           if (!result.data.unique) {
             this.feedback = "Username already exists";
